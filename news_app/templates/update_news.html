@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+{% if user.id == post.author.id %}
 <h1>Update news post</h1>
 <br /><br />
 
@@ -12,6 +13,9 @@
         {{ form.as_p }}
         <button class="btn btn-info">Update</button>
 </div>
+{% else %}
+You have no permission!
+{% endif %}
 
 {% else %}
 You're not allowed here!
