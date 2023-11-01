@@ -2,6 +2,7 @@
 {% block title %}Edit news post{% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
 <h1>Update news post</h1>
 <br /><br />
 
@@ -11,4 +12,8 @@
         {{ form.as_p }}
         <button class="btn btn-info">Update</button>
 </div>
+
+{% else %}
+You're not allowed here!
+{% endif %}
 {% endblock %}

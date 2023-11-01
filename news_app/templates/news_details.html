@@ -9,8 +9,11 @@
     {{ post.author.first_name}} -
     {{ post.author.last_name}} -
     {{ post.post_date }}
+
+    {% if user.is_authenticated %}
     <a href="{% url 'update_news' post.pk %}">[Edit]</a>
     <a href="{% url 'delete_news' post.pk %}">[Delete]</a>
+    {% endif %}
 </small><br />
 <hr>
 <br />
