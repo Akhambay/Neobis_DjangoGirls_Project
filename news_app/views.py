@@ -20,6 +20,7 @@ class AddNewsView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_news.html'
+    success_url = reverse_lazy('home')
     # fields = '__all__'
 
 
@@ -27,6 +28,7 @@ class UpdateNewsView(UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'update_news.html'
+    success_url = reverse_lazy('home')
     # fields = ['title', 'title_tag', 'body']
 
 
