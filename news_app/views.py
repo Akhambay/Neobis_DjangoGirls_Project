@@ -18,10 +18,13 @@ class NewsDetailView(DetailView):
 
 class AddNewsView(CreateView):
     model = Post
-    form_class = PostForm
     template_name = 'add_news.html'
     success_url = reverse_lazy('home')
-    # fields = '__all__'
+    fields = ['title', 'title_tag', 'body']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class UpdateNewsView(UpdateView):
@@ -29,7 +32,6 @@ class UpdateNewsView(UpdateView):
     form_class = PostForm
     template_name = 'update_news.html'
     success_url = reverse_lazy('home')
-    # fields = ['title', 'title_tag', 'body']
 
 
 class DeleteNewsView(DeleteView):
